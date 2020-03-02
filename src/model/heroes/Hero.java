@@ -24,15 +24,19 @@ abstract public class Hero
 	}
 	
 	
-	public static void readFile(String path) throws IOException{
+	static ArrayList<Minion> getAllNeutralMinions(String filePath) throws IOException{
 		
-		//String currentLine = "";
-		FileReader fileReader= new FileReader(path);
+		String currentLine = "";
+		FileReader fileReader= new FileReader(filePath);
 		BufferedReader br = new BufferedReader(fileReader);
-		//while ((currentLine = br.readLine()) != null) {
-		System.out.println(br.readLine());
-		System.out.println(br.readLine());
-		//}
+		while ((currentLine = br.readLine()) != null) {
+			String [] result= currentLine.split(",");
+			for(int i=0;i<result.length;i++) {
+				//System.out.println(result[i]);
+				
+			}
+		//System.out.println(br.readLine());
+		}
 	}
 	
 	
@@ -77,7 +81,7 @@ abstract public class Hero
 	
 	public static void main(String[] args) throws IOException
 	{
-		readFile("C:\\Users\\user\\eclipse-workspace\\Blizzard\\src\\model\\heroes\\neutral_minions.csv");
+		getAllNeutralMinions("C:\\Users\\user\\eclipse-workspace\\Blizzard\\src\\model\\heroes\\neutral_minions.csv");
 	}
 	
 	
