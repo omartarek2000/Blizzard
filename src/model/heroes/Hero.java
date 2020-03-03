@@ -32,11 +32,17 @@ abstract public class Hero
 		BufferedReader br = new BufferedReader(fileReader);
 		while ((currentLine = br.readLine()) != null) {
 			String [] result= currentLine.split(",");
+			Rarity rarity;
 			switch(result[2])
 			{
-				
+			case "b" : rarity = Rarity.BASIC;
+			case "c" : rarity = Rarity.COMMON;
+			case "r" : rarity = Rarity.RARE;
+			case "e" : rarity = Rarity.EPIC;
+			case "l" : rarity = Rarity.LEGENDARY;
+			
 			}
-			x.push(Minion(result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7]));
+			((Object) x).push(new Minion(result[0], Integer.parseInt(result[1]), rarity,Integer.parseInt(result[3]), Integer.parseInt(result[4]),  Boolean.parseBoolean(result[5]),  Boolean.parseBoolean(result[6]), Boolean.parseBoolean(result[7])));
 		//System.out.println(br.readLine());
 		}
 		return x;
