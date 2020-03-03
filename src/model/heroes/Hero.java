@@ -65,10 +65,10 @@ abstract public class Hero
 					 else
 						rnd = new Random().nextInt(minions.size());
 				 }
-				 
+				 System.out.println(x);
 			 }
-			 x.add(minions.get(rnd));
-			 //System.out.println(x);
+			// x.add(minions.get(rnd));
+			 System.out.println(x);
 		}
 		return x;
 	}
