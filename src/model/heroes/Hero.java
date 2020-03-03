@@ -21,6 +21,7 @@ abstract public class Hero
 	public Hero(String name)
 	{
 		this.name=name;
+		this.deck = new ArrayList<Card>();
 	}
 	
 	
@@ -53,25 +54,40 @@ abstract public class Hero
 		ArrayList<Minion> x = new ArrayList<Minion>();
 		for(int i=0;i<count;i++) 
 		{
-			int c=0;
+			 int c=0;
+			 boolean exist=false;
 			 int rnd = new Random().nextInt(minions.size());
+			 Minion current = minions.get(rnd);
+			if((current.getRarity()).equals(Rarity.LEGENDARY)) {
+				for(int j=0;j<x.size();j++) {
+					 if(minions.get(rnd).equals(minions.get(j))) {
+						 exist =true;
+					 }
+				}
+			}
+			 
 			 for(int j=0;j<x.size();j++) 
 			 {
-				 if(minions.get(rnd).equals(x.get(j))) {
-					 if(c<2) {
-					 x.add(minions.get(rnd));
-					 c++;
-					 }
-					 else
-						rnd = new Random().nextInt(minions.size());
+				 if(((Minion)(minions.get(rnd))).equals(((Minion)(x.get(j)))))
+				 {
+					c++; 
 				 }
-				 System.out.println(x);
 			 }
-			// x.add(minions.get(rnd));
-			 System.out.println(x);
-		}
-		return x;
+
+			 if(c<2 || !exist)
+				 x.add(minions.get(rnd));
+			 else
+				 i--;
+			 
+		//System.out.println(x);
+		//return x;
 	}
+		return x;
+}
+	
+	abstract public void buildDeck() throws IOException;
+
+	
 	
 	
 	public int getCurrenHP() {
@@ -114,7 +130,7 @@ abstract public class Hero
 	
 	public static void main(String[] args) throws IOException
 	{
-		getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 5);
+		getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 15);
 		
 	}
 	

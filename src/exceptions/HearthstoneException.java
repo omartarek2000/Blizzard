@@ -1,9 +1,16 @@
 package exceptions;
 
-public class HearthstoneException
+abstract public class HearthstoneException extends Exception
 {
-	HearthstoneException()
+	public HearthstoneException()
 	{
+	super();
+	}
+
+	public HearthstoneException(String s) 
+	{
+	super(s);
+	
 	
 	}
 }
