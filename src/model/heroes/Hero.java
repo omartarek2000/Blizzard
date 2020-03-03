@@ -25,7 +25,7 @@ abstract public class Hero
 	}
 	
 	
-	static ArrayList<Minion> getAllNeutralMinions(String filePath) throws IOException{
+	public static ArrayList<Minion> getAllNeutralMinions(String filePath) throws IOException{
 		
 		ArrayList<Minion> x = new ArrayList<Minion>();
 		String currentLine = "";
@@ -49,7 +49,7 @@ abstract public class Hero
 		return x;
 	}
 	
-	static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
+	public static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
 	{
 		ArrayList<Minion> x = new ArrayList<Minion>();
 		for(int i=0;i<count;i++) 
