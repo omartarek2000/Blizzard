@@ -48,6 +48,30 @@ abstract public class Hero
 		return x;
 	}
 	
+	static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
+	{
+		ArrayList<Minion> x = new ArrayList<Minion>();
+		for(int i=0;i<count;i++) 
+		{
+			int c=0;
+			 int rnd = new Random().nextInt(minions.size());
+			 for(int j=0;j<x.size();j++) 
+			 {
+				 if(minions.get(rnd).equals(x.get(j))) {
+					 if(c<2) {
+					 x.add(minions.get(rnd));
+					 c++;
+					 }
+					 else
+						rnd = new Random().nextInt(minions.size());
+				 }
+				 System.out.println(x);
+			 }
+			// x.add(minions.get(rnd));
+			 System.out.println(x);
+		}
+		return x;
+	}
 	
 	
 	public int getCurrenHP() {
@@ -90,7 +114,8 @@ abstract public class Hero
 	
 	public static void main(String[] args) throws IOException
 	{
-		getAllNeutralMinions("neutral_minions.csv");
+		getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 5);
+		
 	}
 	
 	
