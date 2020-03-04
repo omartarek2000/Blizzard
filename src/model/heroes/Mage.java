@@ -11,9 +11,10 @@ import model.cards.spells.Pyroblast;
 
 public class Mage extends Hero 
 {
-	public Mage()
+	public Mage() throws IOException
 	{
 		super("Jaina Proudmoore");
+		buildDeck();
 	}
 
 public void buildDeck() throws IOException

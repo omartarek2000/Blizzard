@@ -10,9 +10,10 @@ import model.cards.spells.SealOfChampions;
 
 public class Paladin extends Hero 
 {
-	public Paladin()
+	public Paladin() throws IOException
 	{
 		super("Uther Lightbringer");
+		buildDeck();
 	}
 
 	public void buildDeck() throws IOException

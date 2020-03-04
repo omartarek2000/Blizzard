@@ -9,9 +9,10 @@ import model.cards.spells.*;
 
 public class Warlock extends Hero 
 {
-	public Warlock()
+	public Warlock() throws IOException
 	{
 		super("Gul'dan");
+		buildDeck();
 	}
 	public void buildDeck() throws IOException
 	{

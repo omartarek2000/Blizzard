@@ -8,9 +8,10 @@ import model.cards.spells.*;
 
 public class Priest extends Hero 
 {
-	public Priest()
+	public Priest() throws IOException
 	{
-		super("Anduin Wrynn");	
+		super("Anduin Wrynn");
+		buildDeck();
 	}	
 	public void buildDeck() throws IOException
 	{

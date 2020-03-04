@@ -3,7 +3,7 @@ package exceptions;
 import model.cards.Card;
 
 public class FullHandException extends HearthstoneException {
-	Card burned;
+	private Card burned;
 	
 	public FullHandException(Card b)
 	{

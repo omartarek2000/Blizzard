@@ -9,9 +9,10 @@ import model.cards.spells.*;
 
 public class Hunter extends Hero 
 {
-	public Hunter()
+	public Hunter() throws IOException
 	{
 		super ("Rexxar");
+		buildDeck();
 	}
 	public void buildDeck() throws IOException
 	{
@@ -30,9 +31,9 @@ public class Hunter extends Hero
 		
 	}
 	
-	public static void main(String[] args) throws IOException
+	/*public static void main(String[] args) throws IOException
 	{
 		Hunter x = new Hunter();
 		x.buildDeck();
-	}
+	}*/
 }

@@ -8,7 +8,7 @@ import model.cards.minions.*;
 abstract public class Hero 
 {
 	private String name;
-	private int currenHP;
+	private int currentHP;
 	private boolean heroPowerUsed;
 	private int totalManaCrystals;
 	private int currentManaCrystals;
@@ -22,6 +22,7 @@ abstract public class Hero
 	{
 		this.name=name;
 		this.deck = new ArrayList<Card>();
+		currentHP=30;
 	}
 	
 	
@@ -46,10 +47,13 @@ abstract public class Hero
 			x.add(new Minion(result[0], Integer.parseInt(result[1]), rarity,Integer.parseInt(result[3]), Integer.parseInt(result[4]),  Boolean.parseBoolean(result[5]),  Boolean.parseBoolean(result[6]), Boolean.parseBoolean(result[7])));
 			//System.out.println(x);
 		}
+		
+		//x.add(new Icehowl());
+		
 		return x;
 	}
 	
-	public static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
+	public final static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
 	{
 		ArrayList<Minion> x = new ArrayList<Minion>();
 		for(int i=0;i<count;i++) 
@@ -90,12 +94,13 @@ abstract public class Hero
 	
 	
 	
-	public int getCurrenHP() {
-		return currenHP;
+	public int getCurrentHP() {
+		return currentHP;
 	}
-	public void setCurrenHP(int currenHP) {
-		this.currenHP = currenHP;
-	}
+	    public void setCurrentHP(int currentHP)
+	    {
+	    	this.currentHP = currentHP;
+	    }
 	public boolean isHeroPowerUsed() {
 		return heroPowerUsed;
 	}
@@ -105,14 +110,22 @@ abstract public class Hero
 	public int getTotalManaCrystals() {
 		return totalManaCrystals;
 	}
-	public void setTotalManaCrystals(int totalManaCrystals) {
-		this.totalManaCrystals = totalManaCrystals;
+	public void setTotalManaCrystals(int totalManaCrystals)
+	{
+		if(totalManaCrystals>10)
+			this.totalManaCrystals=10;
+		else
+			this.totalManaCrystals = totalManaCrystals;
 	}
 	public int getCurrentManaCrystals() {
 		return currentManaCrystals;
 	}
-	public void setCurrentManaCrystals(int currentManaCrystals) {
-		this.currentManaCrystals = currentManaCrystals;
+	public void setCurrentManaCrystals(int currentManaCrystals)
+	{
+		if(currentManaCrystals>10)
+			this.currentManaCrystals=10;
+		else
+			this.currentManaCrystals = currentManaCrystals;	
 	}
 	public String getName() {
 		return name;
