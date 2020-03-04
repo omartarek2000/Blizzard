@@ -8,13 +8,16 @@ public class FullHandException extends HearthstoneException {
 	public FullHandException(Card b)
 	{
 		super();
+		this.burned=b;
+		
+		
 		
 	}
 
 	public FullHandException(String s,Card b)
 	{
 		super(s);
-		
+		this.burned=b;
 	}
 
 }
