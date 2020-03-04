@@ -100,6 +100,8 @@ abstract public class Hero
 	    public void setCurrentHP(int currentHP)
 	    {
 	    	this.currentHP = currentHP;
+	    	if(currentHP>30)
+	    		currentHP=30;
 	    }
 	public boolean isHeroPowerUsed() {
 		return heroPowerUsed;
