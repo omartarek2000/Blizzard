@@ -30,10 +30,10 @@ abstract public class Hero
 		
 		ArrayList<Minion> x = new ArrayList<Minion>();
 		String currentLine = "";
-		FileReader fileReader= new FileReader(filePath);
+		FileReader fileReader = new FileReader(filePath);
 		BufferedReader br = new BufferedReader(fileReader);
 		while ((currentLine = br.readLine()) != null) {
-			String [] result= currentLine.split(",");
+			String [] result = currentLine.split(",");
 			Rarity rarity = null;
 			switch(result[2])
 			{
@@ -63,8 +63,8 @@ abstract public class Hero
 			 int rnd = new Random().nextInt(minions.size());
 			 Minion current = minions.get(rnd);
 			if((current.getRarity()).equals(Rarity.LEGENDARY)) {
-				for(int j=0;j<x.size();j++) {
-					 if(minions.get(rnd).equals(minions.get(j))) {
+				for(int k=0;k<x.size();k++) {
+					 if(minions.get(rnd).equals(minions.get(k))) {
 						 exist =true;
 					 }
 				}
@@ -79,7 +79,7 @@ abstract public class Hero
 			 }
 			}
 
-			 if(c<2 || !exist)
+			 if(c<2 | !exist)
 				 x.add(minions.get(rnd));
 			 else
 				 i--;
