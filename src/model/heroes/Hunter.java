@@ -2,6 +2,7 @@ package model.heroes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.cards.Rarity;
 import model.cards.minions.*;
@@ -27,7 +28,9 @@ public class Hunter extends Hero
 		getDeck().add(new MultiShot());
 		getDeck().add(new MultiShot());
 		getDeck().add(new Minion("King Krush", 9, Rarity.LEGENDARY, 8, 8, false, false, true));
-		System.out.print(getDeck().size());
+		//System.out.print(getDeck().size());
+		
+		Collections.shuffle(getDeck());
 		
 	}
 	

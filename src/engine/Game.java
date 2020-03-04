@@ -23,5 +23,15 @@ abstract public class Game
 			currentHero=p2;
 		opponent=p1;
 	}
+
+	public Hero getCurrentHero() {
+		return currentHero;
+	}
+
+	public Hero getOpponent() {
+		return opponent;
+	}
+	
+	
 	
 }

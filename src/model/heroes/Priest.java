@@ -1,6 +1,7 @@
 package model.heroes;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.cards.Rarity;
 import model.cards.minions.Minion;
@@ -28,5 +29,7 @@ public class Priest extends Hero
 		getDeck().add(new ShadowWordDeath());
 		getDeck().add(new ShadowWordDeath());
 		getDeck().add(new Minion("Prophet Velen", 7, Rarity.LEGENDARY, 7, 7, false, false, false));
+		
+		Collections.shuffle(getDeck());
 	}
 }

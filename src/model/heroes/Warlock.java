@@ -2,6 +2,7 @@ package model.heroes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.cards.Rarity;
 import model.cards.minions.Minion;
@@ -29,5 +30,8 @@ public class Warlock extends Hero
 		getDeck().add(new TwistingNether());
 		getDeck().add(new TwistingNether());
 		getDeck().add(new Minion("Wilfred Fizzlebang",6, Rarity.LEGENDARY, 4, 4, false, false, false));
+		
+		
+		Collections.shuffle(getDeck());
 	}
 }

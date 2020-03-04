@@ -2,6 +2,7 @@ package model.heroes;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.cards.Rarity;
 import model.cards.minions.Minion;
@@ -30,7 +31,9 @@ public class Paladin extends Hero
 		getDeck().add(new LevelUp());
 		
 	getDeck().add(new Minion("Tirion Fordring", 4, Rarity.LEGENDARY, 6, 6, true, true, false));
-		System.out.print(getDeck().size());
+		//System.out.print(getDeck().size());
+		
+		Collections.shuffle(getDeck());
 		
 	}
 
