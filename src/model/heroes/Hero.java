@@ -53,7 +53,7 @@ abstract public class Hero
 		return x;
 	}
 	
-	public static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
+	public final static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
 	{
 		ArrayList<Minion> x = new ArrayList<Minion>();
 		for(int i=0;i<count;i++) 
@@ -69,7 +69,7 @@ abstract public class Hero
 					 }
 				}
 			}
-			 
+			else {
 			 for(int j=0;j<x.size();j++) 
 			 {
 				 if(((Minion)(minions.get(rnd))).equals(((Minion)(x.get(j)))))
@@ -77,6 +77,7 @@ abstract public class Hero
 					c++; 
 				 }
 			 }
+			}
 
 			 if(c<2 || !exist)
 				 x.add(minions.get(rnd));

@@ -31,6 +31,7 @@ public void buildDeck() throws IOException
 	getDeck().add(new Flamestrike());
 	getDeck().add(new Flamestrike());
 	getDeck().add(new Pyroblast());
+	getDeck().add(new Pyroblast());
 	getDeck().add(new Minion("Kalycgos", 10, Rarity.LEGENDARY, 4, 12, false, false, false));
 	//System.out.print(getDeck().size());
 	

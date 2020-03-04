@@ -1,8 +1,9 @@
 package engine;
+import java.util.ArrayList;
 import java.util.Random;
 
 import model.heroes.*;
-abstract public class Game
+public class Game
 {
 	private Hero firstHero;
 	private Hero secondHero;
@@ -11,16 +12,21 @@ abstract public class Game
 
 	public Game(Hero p1, Hero p2)
 	{
+		ArrayList<Hero> all = new ArrayList<Hero>();
+		
+		all.add(p1);
+		all.add(p2);
+		
 		firstHero=p1;
 		secondHero=p2;
-		int rnd = new Random().nextInt(1);
-		if(rnd==0)
+		
+		Random rand = new Random();
+		 currentHero = all.get(rand.nextInt(2));
+		if(currentHero == p1)
 		{
-			currentHero=p1;
 			opponent=p2;
 		}
 		else
-			currentHero=p2;
 		opponent=p1;
 	}
 
