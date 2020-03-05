@@ -35,20 +35,23 @@ abstract public class Hero
 		while ((currentLine = br.readLine()) != null) {
 			String [] result = currentLine.split(",");
 			Rarity rarity = null;
+			System.out.println(result[0]);
 			switch(result[2])
 			{
-			case "b" : rarity = Rarity.BASIC;
-			case "c" : rarity = Rarity.COMMON;
-			case "r" : rarity = Rarity.RARE;
-			case "e" : rarity = Rarity.EPIC;
-			case "l" : rarity = Rarity.LEGENDARY;
+			case "b" : rarity = Rarity.BASIC;System.out.println("b");
+			case "c" : rarity = Rarity.COMMON;System.out.println("c");
+			case "r" : rarity = Rarity.RARE;System.out.println("r");
+			case "e" : rarity = Rarity.EPIC;System.out.println("e");
+			case "l" : rarity = Rarity.LEGENDARY;System.out.println("l");
 			
 			}
+			if(result[0].equals("Icehowl"))
+				x.add(new Icehowl());
+			else
 			x.add(new Minion(result[0], Integer.parseInt(result[1]), rarity,Integer.parseInt(result[3]), Integer.parseInt(result[4]),  Boolean.parseBoolean(result[5]),  Boolean.parseBoolean(result[6]), Boolean.parseBoolean(result[7])));
 			//System.out.println(x);
 		}
 		
-		//x.add(new Icehowl());
 		
 		return x;
 	}
