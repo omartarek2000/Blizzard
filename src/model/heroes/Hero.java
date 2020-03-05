@@ -35,14 +35,14 @@ abstract public class Hero
 		while ((currentLine = br.readLine()) != null) {
 			String [] result = currentLine.split(",");
 			Rarity rarity = null;
-			System.out.println(result[0]);
+			//System.out.println(result[0]);
 			switch(result[2])
 			{
-			case "b" : rarity = Rarity.BASIC;System.out.println("b");
-			case "c" : rarity = Rarity.COMMON;System.out.println("c");
-			case "r" : rarity = Rarity.RARE;System.out.println("r");
-			case "e" : rarity = Rarity.EPIC;System.out.println("e");
-			case "l" : rarity = Rarity.LEGENDARY;System.out.println("l");
+			case "b" : rarity = Rarity.BASIC;break;
+			case "c" : rarity = Rarity.COMMON;break;
+			case "r" : rarity = Rarity.RARE;break;
+			case "e" : rarity = Rarity.EPIC;break;
+			case "l" : rarity = Rarity.LEGENDARY;break;
 			
 			}
 			if(result[0].equals("Icehowl"))
@@ -62,13 +62,13 @@ abstract public class Hero
 		for(int i=0;i<count;i++) 
 		{
 			 int c=0;
-			 boolean exist=false;
+			 int l=0;
 			 int rnd = new Random().nextInt(minions.size());
 			 Minion current = minions.get(rnd);
 			if((current.getRarity()).equals(Rarity.LEGENDARY)) {
 				for(int k=0;k<x.size();k++) {
-					 if(minions.get(rnd).equals(minions.get(k))) {
-						 exist =true;
+					 if(current.equals(minions.get(k))) {
+						 l++;
 					 }
 				}
 			}
@@ -82,7 +82,7 @@ abstract public class Hero
 			 }
 			}
 
-			 if(c<2 | !exist)
+			 if(c<2 || l<1)
 				 x.add(minions.get(rnd));
 			 else
 				 i--;
@@ -90,6 +90,7 @@ abstract public class Hero
 		//System.out.println(x);
 		//return x;
 	}
+		//System.out.println(x.toString());
 		return x;
 }
 	
