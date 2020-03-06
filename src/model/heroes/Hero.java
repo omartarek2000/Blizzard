@@ -59,38 +59,6 @@ abstract public class Hero
 	public final static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
 	{
 		ArrayList<Minion> x = new ArrayList<Minion>();
-		/*int [] y = new int[count];
-		
-		
-		for(int i=0; i<count;i++) {
-			int rnd = new Random().nextInt(minions.size());
-			y[i]=rnd;
-		}
-		for(int i=0; i<count;i++) {
-			int c=0;
-			int l=0;
-			for(int j=i+1; i<count;j++) {
-				if(y[i]==y[j]) {
-					if(x.get(y[i]).getRarity()==Rarity.LEGENDARY) {
-						l++;
-					}
-					else {
-						c++;
-					}
-						
-						
-				}
-				if(l<1&&c<2)
-					x.add(minions.get(i));
-				else {
-					y[i]= new Random().nextInt(minions.size());
-					i--;
-				}
-				
-			}
-		}*/
-			
-
 		
 		for(int i=0;i<count;i++) 
 		{
@@ -124,14 +92,6 @@ abstract public class Hero
 			else
 				i--;
 				
-			/*if(l<1)
-			 if(c<2)
-				 x.add(minions.get(rnd));
-			 else
-				 i--;
-			else
-				i--;
-			 
 		//System.out.println(x);
 		//return x;*/
 	}
