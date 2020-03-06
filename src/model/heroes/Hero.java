@@ -59,27 +59,38 @@ abstract public class Hero
 	public final static ArrayList<Minion> getNeutralMinions(ArrayList<Minion> minions,int count)
 	{
 		ArrayList<Minion> x = new ArrayList<Minion>();
-		/*for(int i= 0; i<count;i++) {
-			Random rnd = new Random();
-			int n = rnd.nextInt(minions.size());
-			if(minions.get(n).getRarity()==Rarity.LEGENDARY) {
+		/*int [] y = new int[count];
+		
+		
+		for(int i=0; i<count;i++) {
+			int rnd = new Random().nextInt(minions.size());
+			y[i]=rnd;
+		}
+		for(int i=0; i<count;i++) {
+			int c=0;
+			int l=0;
+			for(int j=i+1; i<count;j++) {
+				if(y[i]==y[j]) {
+					if(x.get(y[i]).getRarity()==Rarity.LEGENDARY) {
+						l++;
+					}
+					else {
+						c++;
+					}
+						
+						
+				}
+				if(l<1&&c<2)
+					x.add(minions.get(i));
+				else {
+					y[i]= new Random().nextInt(minions.size());
+					i--;
+				}
 				
 			}
-				
-			
-			
-			
-			
-			
-			
 		}*/
-		
-		
-		
-		
-		
-		
-		
+			
+
 		
 		for(int i=0;i<count;i++) 
 		{
@@ -89,10 +100,12 @@ abstract public class Hero
 			 Minion current = minions.get(rnd);
 			if((current.getRarity()).equals(Rarity.LEGENDARY)) {
 				for(int k=0;k<x.size();k++) {
-					 if(current.equals(minions.get(k))) {
+					 if(((Minion)(minions.get(rnd))).equals(x.get(k))) {
 						l++;
+						
 					 }
 				}
+				//System.out.println(l+" legendary "+  current.getName() + rnd);
 			}
 			else {
 			 for(int j=0;j<x.size();j++) 
@@ -100,10 +113,18 @@ abstract public class Hero
 				 if(((Minion)(minions.get(rnd))).equals(((Minion)(x.get(j)))))
 				 {
 					c++; 
+					
 				 }
 			 }
+			 //System.out.println(c+" nonlegendary " + current.getName() + rnd);
 			}
-			if(l<1)
+			
+			if(l<=0 && c<2)
+				x.add(minions.get(rnd));
+			else
+				i--;
+				
+			/*if(l<1)
 			 if(c<2)
 				 x.add(minions.get(rnd));
 			 else
@@ -112,7 +133,7 @@ abstract public class Hero
 				i--;
 			 
 		//System.out.println(x);
-		//return x;
+		//return x;*/
 	}
 		//System.out.println(x.toString());
 		return x;
