@@ -93,7 +93,7 @@ abstract public class Hero
 				i--;
 				
 		//System.out.println(x);
-		//return x;*/
+		//return x;
 	}
 		//System.out.println(x.toString());
 		return x;
@@ -157,7 +157,7 @@ abstract public class Hero
 	
 	public static void main(String[] args) throws IOException
 	{
-		getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 15);
+		//getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 15);
 		
 	}
 	

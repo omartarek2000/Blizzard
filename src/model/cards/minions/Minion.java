@@ -18,15 +18,17 @@ public class Minion extends Card
 	public Minion(String name,int manaCost,Rarity rarity, int attack,int maxHP,boolean taunt,boolean divine,boolean charge)
 			{
 					super(name,manaCost,rarity);
+					
 					if(attack<0)
 						this.attack=0;
 					else
 						this.attack=attack;
-					this.attack=attack;
+					
 					this.maxHP=maxHP;
 					this.currentHP=maxHP;
 					this.taunt=taunt;
 					this.divine=divine;
+					
 					if(charge==true)
 					{
 						sleeping=false;
@@ -65,7 +67,10 @@ public class Minion extends Card
 	}
 
 	public void setCurrentHP(int currentHP) {
-		this.currentHP = currentHP;
+		if(currentHP>maxHP)
+			this.currentHP=maxHP;
+		else
+			this.currentHP = currentHP;
 	}
 
 	public boolean isTaunt() {
