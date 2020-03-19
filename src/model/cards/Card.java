@@ -1,6 +1,7 @@
 package model.cards;
 
-public abstract class Card {
+public abstract class Card implements Cloneable
+{
 	private String name;
 	private int manaCost;
 	private Rarity rarity;
@@ -10,6 +11,18 @@ public abstract class Card {
 		setManaCost(manaCost);
 		this.rarity = rarity;
 	}
+	
+	
+	public Card clone() throws CloneNotSupportedException
+	{
+		return (Card) super.clone();
+		
+	}
+	
+	
+	
+	
+	
 
 	public int getManaCost() {
 		return manaCost;

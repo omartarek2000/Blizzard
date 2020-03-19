@@ -1,6 +1,6 @@
 package engine;
 
-public interface GameListener {
+public interface GameListener
+{
 	public void onGameOver();
-
 }

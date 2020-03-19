@@ -1,4 +1,8 @@
 package model.cards.spells;
 
-public interface LeechingSpell {
+import model.cards.minions.Minion;
+
+public interface LeechingSpell
+{
+	public int performAction(Minion m);
 }
