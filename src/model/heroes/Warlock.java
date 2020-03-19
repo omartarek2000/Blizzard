@@ -6,32 +6,31 @@ import java.util.Collections;
 
 import model.cards.Rarity;
 import model.cards.minions.Minion;
-import model.cards.spells.*;
+import model.cards.spells.CurseOfWeakness;
+import model.cards.spells.SiphonSoul;
+import model.cards.spells.TwistingNether;
 
-public class Warlock extends Hero 
-{
-	public Warlock() throws IOException
-	{
+public class Warlock extends Hero {
+
+	public Warlock() throws IOException {
 		super("Gul'dan");
-		buildDeck();
 	}
-	public void buildDeck() throws IOException
-	{
-		ArrayList<Minion> nm = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 13);
-		
-		for(int i=0; i<nm.size();i++)
+
+	@Override
+	public void buildDeck() throws IOException {
+		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
+		getDeck().addAll(neutrals);
+		for(int i = 0 ; i < 2; i++)
 		{
-			getDeck().add(nm.get(i));
+			getDeck().add(new CurseOfWeakness());
+			getDeck().add(new SiphonSoul());
+			getDeck().add(new TwistingNether());
 		}
-		getDeck().add(new CurseOfWeakness());
-		getDeck().add(new CurseOfWeakness());
-		getDeck().add(new SiphonSoul());
-		getDeck().add(new SiphonSoul());
-		getDeck().add(new TwistingNether());
-		getDeck().add(new TwistingNether());
-		getDeck().add(new Minion("Wilfred Fizzlebang",6, Rarity.LEGENDARY, 4, 4, false, false, false));
-		
-		
+		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
+		getDeck().add(wilfred);
 		Collections.shuffle(getDeck());
+
 	}
+	
+
 }

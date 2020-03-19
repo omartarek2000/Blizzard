@@ -1,26 +1,22 @@
 package model.cards;
 
-abstract public class Card 
-{
+public abstract class Card {
 	private String name;
 	private int manaCost;
 	private Rarity rarity;
-	
-	public Card(String name,int manaCost,Rarity rarity)
-	{
-		this.name=name;
-		this.rarity=rarity;
-		if(manaCost>10) 
-		{
-			this.manaCost=10;
-		}
-		else if(manaCost<0)
-		{
-			this.manaCost=0;
-		}
-		else
-			this.manaCost=manaCost;
-		
+
+	public Card(String name, int manaCost, Rarity rarity) {
+		this.name = name;
+		setManaCost(manaCost);
+		this.rarity = rarity;
+	}
+
+	public int getManaCost() {
+		return manaCost;
+	}
+
+	public Rarity getRarity() {
+		return rarity;
 	}
 
 	public String getName() {
@@ -31,25 +27,12 @@ abstract public class Card
 		this.name = name;
 	}
 
-	public int getManaCost() {
-		return manaCost;
-	}
-
 	public void setManaCost(int manaCost) {
-		if(manaCost>10) 
-		{
-			this.manaCost=10;
-		}
-		else if(manaCost<0)
-		{
-			this.manaCost=0;
-		}
-		else
-			this.manaCost=manaCost;
+		this.manaCost = manaCost;
+		if (this.manaCost > 10)
+			this.manaCost = 10;
+		else if (this.manaCost < 0)
+			this.manaCost = 0;
 	}
 
-	public Rarity getRarity() {
-		return rarity;
-	}
-	
 }

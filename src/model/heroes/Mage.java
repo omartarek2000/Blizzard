@@ -10,32 +10,28 @@ import model.cards.spells.Flamestrike;
 import model.cards.spells.Polymorph;
 import model.cards.spells.Pyroblast;
 
-public class Mage extends Hero 
-{
-	public Mage() throws IOException
-	{
+public class Mage extends Hero {
+
+	public Mage() throws IOException {
 		super("Jaina Proudmoore");
-		buildDeck();
 	}
 
-public void buildDeck() throws IOException
-{
-	ArrayList<Minion> nm = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 13);
-	
-	for(int i=0; i<nm.size();i++)
-	{
-		getDeck().add(nm.get(i));
+	@Override
+	public void buildDeck() throws IOException {
+		ArrayList<Minion> neutrals = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
+		getDeck().addAll(neutrals);
+		for (int i = 0; i < 2; i++) {
+			getDeck().add(new Polymorph());
+			getDeck().add(new Flamestrike());
+			getDeck().add(new Pyroblast());
+		}
+		Minion kalycgos = (new Minion("Kalycgos", 10, Rarity.LEGENDARY, 4, 12, false, false, false));
+		;
+		getDeck().add(kalycgos);
+		Collections.shuffle(getDeck());
+
 	}
-	getDeck().add(new Polymorph());
-	getDeck().add(new Polymorph());
-	getDeck().add(new Flamestrike());
-	getDeck().add(new Flamestrike());
-	getDeck().add(new Pyroblast());
-	getDeck().add(new Pyroblast());
-	getDeck().add(new Minion("Kalycgos", 10, Rarity.LEGENDARY, 4, 12, false, false, false));
-	//System.out.print(getDeck().size());
+
 	
-	Collections.shuffle(getDeck());
-	
-}
+
 }

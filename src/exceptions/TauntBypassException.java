@@ -1,13 +1,13 @@
 package exceptions;
 
-public class TauntBypassException extends HearthstoneException{
+@SuppressWarnings("serial")
+public class TauntBypassException extends HearthstoneException {
 public TauntBypassException()
 {
 	super();
-	
 }
-public TauntBypassException(String s)
+public TauntBypassException(String message)
 {
-	super(s);
+	super(message);
 }
 }

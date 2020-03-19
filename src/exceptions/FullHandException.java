@@ -2,22 +2,19 @@ package exceptions;
 
 import model.cards.Card;
 
+@SuppressWarnings("serial")
 public class FullHandException extends HearthstoneException {
+	@SuppressWarnings("unused")
 	private Card burned;
-	
-	public FullHandException(Card b)
-	{
+	public FullHandException(Card b) {
 		super();
-		this.burned=b;
-		
-		
+		burned=b;
 		
 	}
 
-	public FullHandException(String s,Card b)
-	{
-		super(s);
-		this.burned=b;
+	public FullHandException(String message,Card b) {
+		super(message);
+		burned=b;
+		
 	}
-
 }

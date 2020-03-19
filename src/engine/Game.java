@@ -1,33 +1,24 @@
 package engine;
-import java.util.ArrayList;
-import java.util.Random;
 
-import model.heroes.*;
-public class Game
-{
+import model.heroes.Hero;
+
+public class Game  {
 	private Hero firstHero;
 	private Hero secondHero;
 	private Hero currentHero;
 	private Hero opponent;
-
+	
 	public Game(Hero p1, Hero p2)
 	{
-		ArrayList<Hero> all = new ArrayList<Hero>();
-		
-		all.add(p1);
-		all.add(p2);
-		
 		firstHero=p1;
 		secondHero=p2;
 		
-		Random rand = new Random();
-		 currentHero = all.get(rand.nextInt(2));
-		if(currentHero == p1)
-		{
-			opponent=p2;
-		}
-		else
-		opponent=p1;
+		int coin = (int) (Math.random()*2);
+		currentHero= coin==0?firstHero:secondHero;
+		opponent= currentHero==firstHero?secondHero:firstHero;
+		currentHero.setCurrentManaCrystals(1);
+		currentHero.setTotalManaCrystals(1);
+		
 	}
 
 	public Hero getCurrentHero() {
@@ -37,7 +28,9 @@ public class Game
 	public Hero getOpponent() {
 		return opponent;
 	}
+
 	
 	
 	
+
 }

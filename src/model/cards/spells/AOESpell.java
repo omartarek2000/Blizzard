@@ -1,6 +1,5 @@
 package model.cards.spells;
 
-public interface AOESpell 
-{
+public interface AOESpell {
 	
 }

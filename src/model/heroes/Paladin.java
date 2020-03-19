@@ -9,41 +9,25 @@ import model.cards.minions.Minion;
 import model.cards.spells.LevelUp;
 import model.cards.spells.SealOfChampions;
 
-public class Paladin extends Hero 
-{
+public class Paladin extends Hero {
 	public Paladin() throws IOException
 	{
 		super("Uther Lightbringer");
-		buildDeck();
 	}
-
-	public void buildDeck() throws IOException
-	{
-		ArrayList<Minion> nm = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 15);
-		
-		for(int i=0; i<nm.size();i++)
+	
+	@Override
+	public void buildDeck() throws IOException {
+		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),15);
+		getDeck().addAll(neutrals);
+		for(int i = 0 ; i < 2; i++)
 		{
-			getDeck().add(nm.get(i));
+			getDeck().add(new SealOfChampions());
+			getDeck().add(new LevelUp());
 		}
-		getDeck().add(new SealOfChampions());
-		getDeck().add(new SealOfChampions());
-		getDeck().add(new LevelUp());
-		getDeck().add(new LevelUp());
-		
-	getDeck().add(new Minion("Tirion Fordring", 4, Rarity.LEGENDARY, 6, 6, true, true, false));
-		//System.out.print(getDeck().size());
-		
+		Minion tirion=new Minion("Tirion Fordring", 4, Rarity.LEGENDARY, 6, 6, true, true, false);
+	
+		getDeck().add(tirion);
 		Collections.shuffle(getDeck());
-		
 	}
-
-
-
-
-
-
-
-
-
-
+	
 }

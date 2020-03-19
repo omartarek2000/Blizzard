@@ -1,9 +1,9 @@
 package model.cards.minions;
 
-import model.cards.*;
+import model.cards.Card;
+import model.cards.Rarity;
 
-public class Minion extends Card
-{
+public class Minion extends Card implements Cloneable {
 	private int attack;
 	private int maxHP;
 	private int currentHP;
@@ -11,55 +11,29 @@ public class Minion extends Card
 	private boolean divine;
 	private boolean sleeping;
 	private boolean attacked;
-	
-	
-	
-	
-	public Minion(String name,int manaCost,Rarity rarity, int attack,int maxHP,boolean taunt,boolean divine,boolean charge)
-			{
-					super(name,manaCost,rarity);
-					
-					if(attack<0)
-						this.attack=0;
-					else
-						this.attack=attack;
-					
-					this.maxHP=maxHP;
-					this.currentHP=maxHP;
-					this.taunt=taunt;
-					this.divine=divine;
-					
-					if(charge==true)
-					{
-						sleeping=false;
-					}
-					else
-						sleeping=true;
-					
-					
-			
-			}
 
-
-
-
-	public int getAttack() {
-		return attack;
+	public Minion(String name, int manaCost, Rarity rarity, int attack, int maxHP, boolean taunt, boolean divine,
+			boolean charge) {
+		super(name, manaCost, rarity);
+		setAttack(attack);
+		this.maxHP = maxHP;
+		this.currentHP = maxHP;
+		this.taunt = taunt;
+		this.divine = divine;
+		if (!charge)
+			this.sleeping = true;
 	}
 
-	public void setAttack(int attack) {
-		if(attack<0 )
-			this.attack=0;
-		else
-			this.attack=attack;
+	public boolean isTaunt() {
+		return taunt;
 	}
 
 	public int getMaxHP() {
 		return maxHP;
 	}
 
-	public void setMaxHP(int maxHP) {
-		this.maxHP = maxHP;
+	public void setMaxHP(int maxHp) {
+		this.maxHP = maxHp;
 	}
 
 	public int getCurrentHP() {
@@ -67,26 +41,39 @@ public class Minion extends Card
 	}
 
 	public void setCurrentHP(int currentHP) {
-		if(currentHP>maxHP)
-			this.currentHP=maxHP;
-		else
-			this.currentHP = currentHP;
+		this.currentHP = currentHP;
+		if (this.currentHP > maxHP)
+			this.currentHP = maxHP;
+		else if (this.currentHP <= 0) {
+			this.currentHP = 0;
+
+		}
 	}
 
-	public boolean isTaunt() {
-		return taunt;
+	public int getAttack() {
+		return attack;
 	}
 
-	public void setTaunt(boolean taunt) {
-		this.taunt = taunt;
+	public void setAttack(int attack) {
+		this.attack = attack;
+		if (this.attack <= 0)
+			this.attack = 0;
 	}
 
-	public boolean isDivine() {
-		return divine;
+	public void setTaunt(boolean isTaunt) {
+		this.taunt = isTaunt;
 	}
 
 	public void setDivine(boolean divine) {
 		this.divine = divine;
+	}
+
+	public boolean isAttacked() {
+		return attacked;
+	}
+
+	public void setAttacked(boolean attacked) {
+		this.attacked = attacked;
 	}
 
 	public boolean isSleeping() {
@@ -97,16 +84,8 @@ public class Minion extends Card
 		this.sleeping = sleeping;
 	}
 
-	public boolean isAttacked() {
-		return attacked;
+	public boolean isDivine() {
+		return divine;
 	}
-
-	public void setAttacked(boolean attacked) {
-		this.attacked = attacked;
-	}
-    
-
-
-
 
 }
