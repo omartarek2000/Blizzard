@@ -11,12 +11,12 @@ import model.cards.spells.MultiShot;
 
 public class Hunter extends Hero {
 
-	public Hunter() throws IOException {
+	public Hunter() throws IOException, CloneNotSupportedException {
 		super("Rexxar");
 	}
 
 	@Override
-	public void buildDeck() throws IOException {
+	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),15);
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
@@ -29,6 +29,12 @@ public class Hunter extends Hero {
 		
 		getDeck().add(krush);
 		Collections.shuffle(getDeck());
+	}
+
+	@Override
+	public void onMinionDeath(Minion m) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

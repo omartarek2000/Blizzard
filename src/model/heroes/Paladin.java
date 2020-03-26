@@ -10,13 +10,13 @@ import model.cards.spells.LevelUp;
 import model.cards.spells.SealOfChampions;
 
 public class Paladin extends Hero {
-	public Paladin() throws IOException
+	public Paladin() throws IOException, CloneNotSupportedException
 	{
 		super("Uther Lightbringer");
 	}
 	
 	@Override
-	public void buildDeck() throws IOException {
+	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),15);
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
@@ -28,6 +28,12 @@ public class Paladin extends Hero {
 	
 		getDeck().add(tirion);
 		Collections.shuffle(getDeck());
+	}
+
+	@Override
+	public void onMinionDeath(Minion m) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

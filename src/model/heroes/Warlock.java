@@ -12,12 +12,12 @@ import model.cards.spells.TwistingNether;
 
 public class Warlock extends Hero {
 
-	public Warlock() throws IOException {
+	public Warlock() throws IOException, CloneNotSupportedException {
 		super("Gul'dan");
 	}
 
 	@Override
-	public void buildDeck() throws IOException {
+	public void buildDeck() throws IOException, CloneNotSupportedException {
 		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
 		getDeck().addAll(neutrals);
 		for(int i = 0 ; i < 2; i++)
@@ -30,6 +30,12 @@ public class Warlock extends Hero {
 		getDeck().add(wilfred);
 		Collections.shuffle(getDeck());
 
+	}
+
+	@Override
+	public void onMinionDeath(Minion m) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
