@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import exceptions.FullFieldException;
+import exceptions.FullHandException;
+import exceptions.HeroPowerAlreadyUsedException;
+import exceptions.NotEnoughManaException;
+import exceptions.NotYourTurnException;
+import model.cards.Card;
 import model.cards.Rarity;
 import model.cards.minions.Minion;
 import model.cards.spells.CurseOfWeakness;
@@ -18,25 +24,31 @@ public class Warlock extends Hero {
 
 	@Override
 	public void buildDeck() throws IOException, CloneNotSupportedException {
-		ArrayList<Minion> neutrals= getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"),13);
+		ArrayList<Minion> neutrals = getNeutralMinions(getAllNeutralMinions("neutral_minions.csv"), 13);
 		getDeck().addAll(neutrals);
-		for(int i = 0 ; i < 2; i++)
-		{
+		for (int i = 0; i < 2; i++) {
 			getDeck().add(new CurseOfWeakness());
 			getDeck().add(new SiphonSoul());
 			getDeck().add(new TwistingNether());
 		}
-		Minion wilfred=new Minion("Wilfred Fizzlebang",6,Rarity.LEGENDARY,4,4,false,false,false);
+		Minion wilfred = new Minion("Wilfred Fizzlebang", 6, Rarity.LEGENDARY, 4, 4, false, false, false);
 		getDeck().add(wilfred);
+		listenToMinions();
 		Collections.shuffle(getDeck());
 
 	}
 
-	@Override
-	public void onMinionDeath(Minion m) {
-		// TODO Auto-generated method stub
-		
+	public void useHeroPower() throws NotEnoughManaException, HeroPowerAlreadyUsedException, NotYourTurnException,
+			FullHandException, CloneNotSupportedException, FullFieldException {
+		super.useHeroPower();
+		setCurrentHP(getCurrentHP() - 2);
+		Card c = drawCard();
+		if (fieldContains("Wilfred Fizzlebang") && c instanceof Minion) {
+			c.setManaCost(0);
+			if (fieldContains("Chromaggus"))
+				getHand().get(getHand().size() - 1).setManaCost(0);
+		}
+
 	}
-	
 
 }
