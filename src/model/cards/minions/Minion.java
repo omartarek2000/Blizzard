@@ -58,6 +58,37 @@ public class Minion extends Card implements Cloneable {
 		target.setCurrentHP(target.getCurrentHP() - attack);
 
 	}
+	
+	public String toStringHand() {
+		String s="";
+		s+="<html>"+getName()+"<br>";
+		s+="ManaCost: "+ getManaCost()+"<br>";
+		s+=getRarity()+"<br>";
+		s+="Attack: "+ attack + " CurrentHP: " + currentHP + "<br>";
+		if(taunt)
+			s+="Taunt" + "<br>";
+		if(divine)
+			s+="Divine" + "<br>";
+		if(!sleeping)
+			s+="Charge Minion";
+
+		return s;
+	}
+	public String toStringField() {
+		String s="";
+		s+="<html>"+getName()+"<br>";
+		s+="ManaCost: "+ getManaCost()+"<br>";
+		s+=getRarity()+"<br>";
+		s+="Attack: "+ attack + " CurrentHP: " + currentHP + "<br>";
+		if(taunt)
+			s+="Taunt" + "<br>";
+		if(divine)
+			s+="Divine" + "<br>";
+		if(sleeping)
+			s+="Sleeping" +"<html>";
+
+		return s;
+	}
 
 	public boolean isTaunt() {
 		return taunt;

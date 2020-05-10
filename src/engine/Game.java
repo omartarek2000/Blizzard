@@ -1,5 +1,7 @@
 package engine;
 
+import javax.swing.JButton;
+
 import exceptions.CannotAttackException;
 import exceptions.FullFieldException;
 import exceptions.FullHandException;
@@ -41,6 +43,7 @@ public class Game implements ActionValidator, HeroListener {
 			opponent.drawCard();
 		}
 	}
+	
 
 	@Override
 	public void validateTurn(Hero user) throws NotYourTurnException {
@@ -141,11 +144,51 @@ public class Game implements ActionValidator, HeroListener {
 			m.setSleeping(false);
 		}
 		currentHero.drawCard();
+		
+		listener.onDeckUpdated();
+		listener.onFieldUpdated();
+		listener.onHeroUpdated();
+		listener.onManaCrystalsUpdated();
+		listener.onHandUpdated();
 
 	}
 
 	public Hero getOpponent() {
 		return opponent;
+	}
+	
+	
+	public void updateHand() {
+		
+		listener.onHandUpdated();
+		
+		
+	}
+
+	
+	public void updateField() {
+	
+		listener.onFieldUpdated();
+	}
+
+	
+	public void updateHero() {
+		
+		listener.onHeroUpdated();
+	}
+
+
+	@Override
+	public void updateManaCrystals() {
+		listener.onManaCrystalsUpdated();
+		
+	}
+
+
+	@Override
+	public void updateDeck() {
+		listener.onDeckUpdated();
+		
 	}
 
 }

@@ -48,6 +48,7 @@ public abstract class Hero implements MinionListener {
 		hand = new ArrayList<Card>(10);
 		buildDeck();
 	}
+	
 
 	public abstract void buildDeck() throws IOException, CloneNotSupportedException;
 
@@ -143,6 +144,12 @@ public abstract class Hero implements MinionListener {
 		currentManaCrystals -= m.getManaCost();
 		hand.remove(m);
 		field.add(m);
+		
+//		listener.updateManaCrystals();
+//		listener.updateField();
+		listener.updateHand();
+//		listener.updateDeck();
+//		listener.updateHero();
 
 	}
 
@@ -166,6 +173,7 @@ public abstract class Hero implements MinionListener {
 
 		s.performAction(field);
 		castSpellCommons((Spell) s);
+		
 
 	}
 
@@ -184,6 +192,7 @@ public abstract class Hero implements MinionListener {
 		int v = s.performAction(m);
 		setCurrentHP(currentHP + v);
 		castSpellCommons((Spell) s);
+
 	}
 
 	public void castSpell(HeroTargetSpell s, Hero h) throws NotYourTurnException, NotEnoughManaException {
@@ -191,6 +200,7 @@ public abstract class Hero implements MinionListener {
 		validator.validateManaCost((Spell) s);
 		s.performAction(h);
 		castSpellCommons((Spell) s);
+		
 
 	}
 
@@ -199,12 +209,19 @@ public abstract class Hero implements MinionListener {
 		validator.validateManaCost((Spell) s);
 		s.performAction(oppField, field);
 		castSpellCommons((Spell) s);
+		
 
 	}
 
 	private void castSpellCommons(Spell s) {
 		currentManaCrystals -= s.getManaCost();
 		hand.remove(s);
+		
+		listener.updateManaCrystals();
+		listener.updateField();
+		listener.updateHand();
+		listener.updateDeck();
+		listener.updateHero();
 	}
 
 	public void endTurn() throws FullHandException, CloneNotSupportedException {
@@ -312,5 +329,17 @@ public abstract class Hero implements MinionListener {
 	public void setValidator(ActionValidator validator) {
 		this.validator = validator;
 	}
+	
+	@Override
+	public String toString() {
+		String s="";
+		s+="<html>"+getName()+"<br>";
+
+		s+=" CurrentHP: " + currentHP + "<html>";
+
+
+		return s;
+	}
+
 
 }

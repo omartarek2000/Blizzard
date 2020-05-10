@@ -54,5 +54,10 @@ public class Priest extends Hero {
 		else
 			h.setCurrentHP(h.getCurrentHP() + 2);
 	}
+	
+	public String toString() {
+		return this.getName(); 
+	}
+
 
 }

@@ -40,5 +40,9 @@ public class Hunter extends Hero {
 		super.useHeroPower();
 		getListener().damageOpponent(2);
 	}
+	
+	public String toString() {
+		return this.getName(); 
+	}
 
 }

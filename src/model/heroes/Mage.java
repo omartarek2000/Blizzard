@@ -84,5 +84,10 @@ public class Mage extends Hero {
 		}
 		super.castSpell(s, h);
 	}
+	
+	public String toString() {
+		return this.getName(); 
+	}
+
 
 }

@@ -43,5 +43,10 @@ public class Paladin extends Hero {
 		listenToMinions();
 		Collections.shuffle(getDeck());
 	}
+	
+	public String toString() {
+		return this.getName(); 
+	}
+
 
 }

@@ -50,5 +50,10 @@ public class Warlock extends Hero {
 		}
 
 	}
+	
+	public String toString() {
+		return this.getName(); 
+	}
+
 
 }
