@@ -231,7 +231,7 @@ public class Controller  implements GameListener, ActionListener{
 		
 	}
 
-	@Override
+	
 	public void onManaCrystalsUpdated() {
 		
 		view.getCurManaCrystals().removeAll();
@@ -269,7 +269,7 @@ public class Controller  implements GameListener, ActionListener{
 		
 	}
 
-	@Override
+	
 	public void onDeckUpdated() {
 		
 		view.revalidate();
